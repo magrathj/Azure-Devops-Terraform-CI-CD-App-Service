@@ -8,7 +8,13 @@ variable "tenant_id" {}
 variable "location" {}
 variable "resource_group" {}
 variable "application_type" {}
+
 # Tags
 variable tier {}
 variable deployment {}
 
+# Storage 
+variable "storage_account_name" {}
+variable "container_name" {}
+variable "key" {}
+variable "access_key" {}

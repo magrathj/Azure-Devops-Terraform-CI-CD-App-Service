@@ -130,4 +130,4 @@ dmypy.json
 
 .vscode/
 
-cicd/terraform/terraform.tfvars
+cicd/terraform/environments/test/terraform.tfvars
