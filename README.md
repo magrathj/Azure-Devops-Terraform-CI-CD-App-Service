@@ -15,5 +15,5 @@ Create service principle with Contributor access
 
 Create the storage account
 ```bash
-    $ az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/SUBSCRIPTION_ID"
+    $ ./cicd/terraform/terraform_configure_storage_account.sh
 ```
