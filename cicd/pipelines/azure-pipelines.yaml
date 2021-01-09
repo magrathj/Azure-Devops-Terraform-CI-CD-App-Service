@@ -11,7 +11,7 @@ stages:
       continueOnError: true
       inputs:
         script: 'COMMAND StarterAPIs.json'
-        workingDirectory: 'starter-code/automatedtesting/postman'
+        workingDirectory: 'src/automatedtesting/postman'
     - task: CmdLine@2
       displayName: DISPLAY NAME
       inputs:
