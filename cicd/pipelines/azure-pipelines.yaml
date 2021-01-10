@@ -7,14 +7,15 @@ stages:
       name: Hosted Ubuntu 1604
     steps:
     - task: CmdLine@2
+      displayName: Install Newman runner
+      inputs:
+        script: sudo npm install -g newman
+        workingDirectory: DEFAULT WORKING DIRECTORY  
+    - task: CmdLine@2
       displayName: DISPLAY NAME
       continueOnError: true
       inputs:
-        script: 'COMMAND StarterAPIs.json'
+        script: 'newman run StarterAPIs.json'
         workingDirectory: 'src/automatedtesting/postman'
-    - task: CmdLine@2
-      displayName: DISPLAY NAME
-      inputs:
-        script: 'COMMAND'
-        workingDirectory: DEFAULT WORKING DIRECTORY
+    
     
