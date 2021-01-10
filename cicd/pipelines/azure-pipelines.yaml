@@ -9,10 +9,9 @@ stages:
     - task: CmdLine@2
       displayName: Install Newman runner
       inputs:
-        script: sudo npm install -g newman
-        workingDirectory: DEFAULT WORKING DIRECTORY  
+        script: 'sudo npm install -g newman'  
     - task: CmdLine@2
-      displayName: DISPLAY NAME
+      displayName: Run Starter API
       continueOnError: true
       inputs:
         script: 'newman run StarterAPIs.json'
