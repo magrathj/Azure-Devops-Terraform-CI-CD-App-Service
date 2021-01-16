@@ -32,7 +32,7 @@ stages:
     - task: AzurePowerShell@5
       displayName: 'Get storage account key'
       inputs:
-        azureSubscription: 'tstate2'
+        azureSubscription: '$(azuresubscription)'
         ScriptType: InlineScript
         azurePowerShellVersion: LatestVersion
         Inline: |
@@ -56,7 +56,7 @@ stages:
       displayName: 'Terraform : init'
       inputs:
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
-        backendServiceArm: 'tstate2'
+        backendServiceArm: '$(azuresubscription)'
         backendAzureRmResourceGroupName: '$(terraformstoragerg)'
         backendAzureRmStorageAccountName: '$(terraformstorageaccount)'
         backendAzureRmContainerName: terraform
@@ -67,14 +67,14 @@ stages:
       inputs:
         command: plan
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
-        environmentServiceNameAzureRM: 'tstate2'
+        environmentServiceNameAzureRM: '$(azuresubscription)'
     - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV1@0
       displayName: 'Terraform : apply'
       inputs:
         command: apply
         workingDirectory: '$(System.DefaultWorkingDirectory)/terraform/environments/test'
         commandOptions: '-auto-approve'
-        environmentServiceNameAzureRM: 'tstate2'
+        environmentServiceNameAzureRM: '$(azuresubscription)'
         backendAzureRmResourceGroupName: '$(terraformstoragerg)'
         backendAzureRmStorageAccountName: '$(terraformstorageaccount) '
         backendAzureRmContainerName: terraform
