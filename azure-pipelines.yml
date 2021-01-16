@@ -18,5 +18,5 @@ stages:
         scriptLocation: inlineScript
         inlineScript: |
           #! /bin/bash
-          az group create --location uksouth --name terraform-test
+          az group create --location uksouth --name $(terraformstoragerg)
 
