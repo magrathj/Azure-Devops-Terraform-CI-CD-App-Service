@@ -16,6 +16,5 @@ stages:
         azureSubscription: $(azuresubscription)
         scriptType: 'ps'
         scriptLocation: inlineScript
-        inlineScript: |
-          az group create --location uksouth --name 'test'
+        inlineScript: 'az group create --location uksouth --name "test"'
 
