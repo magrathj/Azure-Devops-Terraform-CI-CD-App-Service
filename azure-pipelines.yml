@@ -14,7 +14,9 @@ stages:
       displayName: 'Create storage account for terraform state file'
       inputs:
         azureSubscription: $(azuresubscription)
-        scriptType: 'ps'
+        scriptType: bash
         scriptLocation: inlineScript
-        inlineScript: 'az group create --location uksouth --name "test"'
+        inlineScript: |
+          #! /bin/bash
+          az group create --location uksouth --name terraform-test
 
