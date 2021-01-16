@@ -13,9 +13,9 @@ stages:
     - task: AzureCLI@2
       displayName: 'Create storage account for terraform state file'
       inputs:
-        azureSubscription: ${{ variables.azuresubscription }}
-        scriptType: bash
+        azureSubscription: $(azuresubscription)
+        scriptType: 'ps'
         scriptLocation: inlineScript
         inlineScript: |
-          #! /bin/bash
-          az group create --location uksouth --name $(terraformstoragerg)
+          az group create --location uksouth --name 'test'
+
