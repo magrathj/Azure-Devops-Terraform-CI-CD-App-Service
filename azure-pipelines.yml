@@ -23,3 +23,18 @@ stages:
           az storage container create --name terraform --account-name $(terraformstorageaccount)
           az storage account keys list -g $(terraformstoragerg) -n $(terraformstorageaccount)
 
+  - job: getStorageKey
+    displayName: 'Build resources using terraform'
+    dependsOn: createStorageAccount
+    pool:
+      vmImage: windows-latest
+    steps:
+    - task: AzurePowerShell@5
+      displayName: 'Get storage account key'
+      inputs:
+        azureSubscription: '$(azuresubscription)'
+        ScriptType: InlineScript
+        azurePowerShellVersion: LatestVersion
+        Inline: |
+          $key=(Get-AzStorageAccountKey -ResourceGroupName $(terraformstoragerg) -AccountName $(terraformstorageaccount)).Value[0]
+          Write-Host "##vso[task.setvariable variable=storagekey]$key"
