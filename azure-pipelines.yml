@@ -32,7 +32,7 @@ stages:
     - task: AzurePowerShell@5
       displayName: 'Get storage account key'
       inputs:
-        azureSubscription: '$(azuresubscription)'
+        azureSubscription: 'tstate2'
         ScriptType: InlineScript
         azurePowerShellVersion: LatestVersion
         Inline: |
