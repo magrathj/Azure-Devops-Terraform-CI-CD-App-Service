@@ -111,7 +111,7 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Deploy FakeRestAPI app to Azure'
             inputs:
-              azureSubscription: '$(azuresubscription)'
+              azureSubscription: 'tstate2'
               appName: '$(appservice)'
               appType: webApp
               package: $(Pipeline.Workspace)/drop-fakerestapi/$(Build.BuildId)-fakerestapi.zip
