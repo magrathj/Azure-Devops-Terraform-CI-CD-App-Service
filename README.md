@@ -26,7 +26,7 @@ This is my submission for the 'Ensuring Quality Releases' project as part of the
 
 Building out an Azure CI/CD pipeline to create disposable test environments and run automated tests on a published Web App
 
-[![Build Status](https://dev.azure.com/EnsureQualityReleases/EnsureQualityReleases/_apis/build/status/magrathj.Azure-Devops-Terraform-CI-CD-App-Service?branchName=main)](https://dev.azure.com/EnsureQualityReleases/EnsureQualityReleases/_build/latest?definitionId=1&branchName=main)
+[![Build Status](https://dev.azure.com/EnsureQualityReleases/EnsureQualityReleases/_apis/build/status/magrathj.Azure-Devops-Terraform-CI-CD-App-Service%20(1)?branchName=main)](https://dev.azure.com/EnsureQualityReleases/EnsureQualityReleases/_build/latest?definitionId=3&branchName=main)
 
 
 
