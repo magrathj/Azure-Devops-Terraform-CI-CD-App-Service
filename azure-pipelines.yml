@@ -130,3 +130,37 @@ stages:
       inputs:
         testResultsFormat: 'Junit'
         testResultsFiles: '$(Build.SourcesDirectory)/automatedtesting/postman/*.xml'
+        
+  - job: publishSelenium
+    displayName: 'Publish Selenium'
+    steps:
+    - publish: $(System.DefaultWorkingDirectory)/automatedtesting/selenium/selenium-tests.py
+      artifact: seleniumFile
+  - deployment: seleniumOnVMDeploy
+    displayName: 'Install and run Selenium on VM'
+    dependsOn: publishSelenium
+    environment:
+      name:  '$(azureenvironment)'
+      resourceType: VirtualMachine
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - download: current
+            artifact: seleniumFile
+          - task: Bash@3
+            displayName: 'Run Selenium functional tests'
+            inputs:
+              targetType: 'inline'
+              script: |
+                #!/bin/bash             
+                sudo apt-get update -y
+                sudo apt-get install python3-pip -y
+                sudo apt-get install unzip -y
+                sudo apt-get install -y chromium-browser
+                sudo apt-get install -y chromium-chromedriver
+                pip3 install selenium
+                sudo mkdir -p /var/log/selenium
+                sudo chmod 777 /var/log/selenium
+                sudo python3 $(Pipeline.Workspace)/seleniumFile/selenium-tests.py 2>&1 | tee -a /var/log/selenium/selenium.log
+                sudo touch /var/log/selenium/selenium.log
