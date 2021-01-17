@@ -6,6 +6,13 @@ provider "azurerm" {
   features {}
 }
 
+backend "azurerm"  {
+    storage_account_name = "tstate21134"
+    container_name       = "tstate"
+    key                  = "terraform.tfstate"
+    access_key           = ""
+  }
+
 terraform {
   backend "azurerm" {
     resource_group_name  = "__terraformstoragerg__"
