@@ -74,9 +74,14 @@ Go to the app service > Diagnostic Settings > + Add Diagnostic Setting. Tick App
 
 Go to the log analytics workspace > Logs. Run the following query:
 
+```
 Operation
 | where TimeGenerated > ago(2h)
 | summarize count() by TimeGenerated, OperationStatus, Detail
+```
+
+
+![Logs](images/LogAnalytics.PNG)
 
 This should show some log results (though it may take an hour or so before they appear).
 
