@@ -19,7 +19,7 @@ This is my submission for the 'Ensuring Quality Releases' project as part of the
     * Set up email alerting for the app service (manual step in azure portal).
     * Set up custom logging in log analytics to gather selenium logs from the VM (maunal step in azure portal).
 
-
+![Pipeline](images/Azure-Pipeline.PNG)
 
 ## Instructions
 Create the service principal
@@ -64,6 +64,9 @@ Create a pipeline connected to github and select this repo.
 Set up email alerts
 
 In the azure portal go to the app service > Alerts > New Alert Rule. Add an HTTP 404 condition and add a threshold value of 1. This will create an alert if there are two or more consecutive 404 alerts. Click Done. Then create an action group with notification type Email/SMS message/Push/Voice and choose the email option. Set the alert rule name and severity. Wait ten minutes for the alert to take effect. If you then visit the URL of the app service and try to go to a non-existent page more than once it should trigger the email alert.
+
+
+![Pipeline](images/EmailAltertHTTP404.PNG)
 
 Set up log analytics
 
