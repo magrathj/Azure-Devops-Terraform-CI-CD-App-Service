@@ -6,8 +6,7 @@ stages:
   displayName: 'Build'
   jobs:
   - job: getStorageKey
-    displayName: 'Build resources using terraform'
-    dependsOn: createStorageAccount
+    displayName: 'Build resources using terraform' 
     pool:
       vmImage: windows-latest
     steps:
