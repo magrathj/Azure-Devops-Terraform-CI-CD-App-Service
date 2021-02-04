@@ -5,24 +5,6 @@ stages:
 - stage: Build
   displayName: 'Build'
   jobs:
-  - job: createStorageAccount
-    displayName: 'Create storage account for terraform state file'
-    pool:
-      vmImage: ubuntu-latest
-    steps:
-    - task: AzureCLI@2
-      displayName: 'Create storage account for terraform state file'
-      inputs:
-        azureSubscription: 'tstate2'
-        scriptType: bash
-        scriptLocation: inlineScript
-        inlineScript: |
-          #! /bin/bash
-          az group create --location uksouth --name $(terraformstoragerg)
-          az storage account create --name $(terraformstorageaccount) --resource-group $(terraformstoragerg) --location uksouth --sku Standard_LRS
-          az storage container create --name terraform --account-name $(terraformstorageaccount)
-          az storage account keys list -g $(terraformstoragerg) -n $(terraformstorageaccount)
-
   - job: getStorageKey
     displayName: 'Build resources using terraform'
     dependsOn: createStorageAccount
